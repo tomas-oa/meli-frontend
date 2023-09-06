@@ -1,34 +1,132 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Test Práctico - Frontend
 
-## Getting Started
+Bienvenido al test práctico para aspirantes al área de frontend de Mercado Libre.
 
-First, run the development server:
+A continuación presentamos el diseño y la descripción funcional de una pequeña aplicación que será la base del trabajo que deberás desarrollar.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+La aplicación consta de tres componentes principales: la caja de búsqueda, la visualización de resultados, y la descripción del detalle del producto.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Tenés que usar el siguiente stack tecnológico para construir la aplicación:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Cliente:
+  - HTML
+  - JS + CSS
+- Servidor:
+  - Node >= 6
+  - Express
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<u> Para resolverlo, te pedimos que tengas en cuenta: </u>
 
-## Learn More
+- Usabilidad
+- SEO
+- Performance
+- Escalabilidad
 
-To learn more about Next.js, take a look at the following resources:
+<u> Primero, te presentamos las vistas de las pantallas que tenés que hacer: </u>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Caja de búsqueda
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![](/public/search.png)
 
-## Deploy on Vercel
+2. Resultado de la búsqueda y Detalle del producto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![](/public/results-details.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<u> Te pedimos: </u>
+
+- En base a los diseños dados, construir las tres vistas:
+  - Caja de búsqueda
+  - Resultados de la búsqueda
+  - Detalle del producto
+
+- Las vistas son navegables de manera independiente y cuentan con su propia url:
+  - Caja de búsqueda: ​"/​"
+  - Resultados de la búsqueda: ​"/items?search=​"
+  - Detalle del producto: ​"/items/​:id"
+
+- Construir los siquientes endpoints para ser utilizados desde las vistas:
+  - ​/api/items?q=​:query
+
+    - Debe consultar el siguiente endpoint:
+
+      https://api.mercadolibre.com/sites/MLA/search?q=​:query
+
+      Y devolver los resultados en el formato indicado:
+
+      ```json
+      {
+        "author": {
+          "name": String,
+          "lastname": String
+        },
+        "categories": [String, String, String, ...],
+        "items": [
+          {
+            "id": String,
+            "title": String,
+            "price": {
+              "currency": String,
+              "amount": Number,
+              "decimals": Number
+            },
+            "picture": String,
+            "condition": String,
+            "free_shipping": Boolean
+          },
+          {...},
+          {...},
+          {...}
+        ]
+      }
+      ```
+
+  - ​/api/items/​:id
+  
+      - Debe consultar los siguientes endpoints:
+  
+        https://api.mercadolibre.com/items/​:id
+        https://api.mercadolibre.com/items/​:id​/description
+  
+        Y devolver los resultados en el formato indicado:
+  
+        ```json
+        {
+          "author": {
+            "name": String,
+            "lastname": String
+          },
+          "item": {
+            "id": String,
+            "title": String,
+            "price": {
+              "currency": String,
+              "amount": Number,
+              "decimals": Number
+            },
+            "picture": String,
+            "condition": String,
+            "free_shipping": Boolean,
+            "sold_quantity": Number,
+            "description": String
+          }
+        }
+        ```
+
+<u> Descripción funcional de la aplicación </u>
+
+- En la vista de caja de búsqueda, debería poder ingresar el producto a buscar y al enviar el formulario navegar a la vista de resultados de búsqueda, visualizando solo 4 productos. Luego, al hacer click sobre uno de ellos, debería navegar a la vista de Detalle de Producto.
+
+- Dado un id de producto, debería poder ingresar directamente a la vista de detalle de producto.
+
+<u> Entregable </u>
+
+- Código fuente en un repositorio público
+- Enviar el link al repositorio por e-mail
+
+<u> Notas </u>
+
+- La firma del json en el campo author se refiere a tu nombre y apellido. Deberás agregar esta firma en el manejo de datos entre la API y el frontend.
+- El repositorio puede ser público o privado, como prefieras.
+- No es necesario implementar la paginación, ni el filtro por categorías.
+- El breadcrumb que se muestra en el listado de búsqueda debe armarse basado en la categoría que más resultados obtuvo (dicha información está disponible en la API de Search). (Obviamente, el breadcrumb de la página de detalle del ítem debe armarse con la categoría propia del ítem).
+- Podés usar el listado de search la imagen que devuelve la API (90x90) aunque esta se vea pixeleada al estirarla para ajustarse al diseño del test. (A fines del test, no hace falta que busques la imagen en el tamaño exacto).
