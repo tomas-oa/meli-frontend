@@ -19,7 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SearchBar />
-        {children}
+        <main className='w-full bg-zinc-200 min-h-screen overflow-hidden'>
+          {children}
+        </main>
       </body>
     </html>
   )
