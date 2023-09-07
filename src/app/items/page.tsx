@@ -14,6 +14,7 @@ export default async function SearchBar ({searchParams}: Props) {
       title: string;
       price: number;
       thumbnail: string;
+      currency_id: string;
       seller_address: {
         city: {
           name: string;

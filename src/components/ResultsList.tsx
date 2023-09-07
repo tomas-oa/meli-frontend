@@ -7,7 +7,7 @@ function Result ({ result }: { result: any }) {
         <div className='flex gap-4'>
           <img className='object-contain' src={result.thumbnail} alt={result.title} />
           <div className='flex flex-col gap-2 justify-center w-72'>
-            <h2 className='text-xl font-bold'>${result.price}</h2>
+            <h2 className='text-xl font-bold'>{Number(result.price).toLocaleString('es-AR', { style: 'currency', currency: result.currency_id })}</h2>
             <h3 className='text-sm'>{result.title}</h3>
           </div>
         </div>

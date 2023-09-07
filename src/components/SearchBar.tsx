@@ -10,7 +10,7 @@ export default function SearchBar () {
         </Link>
         <div className="w-full">
           <form className="flex" action="/items">
-            <input name="query" className="w-full rounded-l-sm p-1 h-8 px-3 text-sm" type="text" placeholder="Nunca dejes de buscar"/>
+            <input name="query" className="w-full rounded-l-sm p-1 h-8 px-3 text-sm focus:outline-none" type="text" placeholder="Nunca dejes de buscar"/>
             <button className="bg-slate-100 p-1 rounded-r-sm">
               <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>

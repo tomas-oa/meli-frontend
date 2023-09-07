@@ -6,3 +6,13 @@
   color: CanvasText;
   background-color: Canvas;
 }
+
+input:-webkit-autofill {
+  background-color: transparent !important;
+  box-shadow: 0 0 0 30px white inset !important; 
+}
+
+input:-webkit-autofill:focus {
+  background-color: transparent !important; 
+  box-shadow: 0 0 0 30px white inset !important; 
+}
