@@ -22,7 +22,7 @@ function Result ({ result }: { result: any }) {
 export default function ResultsList({ results }: { results: any[]}) {
   return (
     <section className='w-3/4 mx-auto p-2 flex flex-col gap-5 bg-white justify-center'>
-      {results.map(result => <Result result={result} />)}
+      {results.map((result, index) => <Result key={index} result={result} />)}
     </section>
   )
 }
